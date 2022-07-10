@@ -49,3 +49,6 @@ Your analysis of the data will be split into three main parts, or stages.
 - Find a hotel from the cities' coordinates using Google's Maps and Places API, and Search Nearby feature.
 - Store the name of the first hotel in the DataFrame.
 - Add pop-up markers to the heatmap that display information about the city, current maximum temperature, and a hotel in the city.
+
+### Findings
+From 6.1.5 - When you run the code block, you should get slightly more than 500 unique cities. If you get fewer than 500, increase your size limit on the np.random.uniform() function.
