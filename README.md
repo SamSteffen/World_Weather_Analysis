@@ -64,3 +64,23 @@ From 6.4.4 - The correlation between the latitude and percent cloudiness is very
 
 ### Findings
 From 6.4.5 - The correlation between the latitude and wind speed is very low because the r-value is less than –0.07 for the Northern Hemisphere and less than –0.3 for the Southern Hemisphere for the plots shown here. This means that wind speed is unpredictable due to changing weather patterns that can increase or decrease wind speed. Check the r-values for your plots.
+
+# Challenge
+Jack loves the PlanMyTrip app. Beta testers love it too. And, as with any new product, they’ve recommended a few changes to take the app to the next level. Specifically, they recommend adding the weather description to the weather data you’ve already retrieved in this module. Then, you'll have the beta testers use input statements to filter the data for their weather preferences, which will be used to identify potential travel destinations and nearby hotels. From the list of potential travel destinations, the beta tester will choose four cities to create a travel itinerary. Finally, using the Google Maps Directions API, you will create a travel route between the four cities as well as a marker layer map.
+
+This new assignment consists of three technical analyses. You will submit the following deliverables:
+
+Deliverable 1: Retrieve Weather Data
+Deliverable 2: Create a Customer Travel Destinations Map
+Deliverable 3: Create a Travel Itinerary Map
+
++
+A README.md that describes the purpose of the repository. Although there is no graded written analysis for this challenge, it is encouraged and good practice to add a brief description of your project.
+
+IMPORTANT
+Do not include your config.py file in your submission.
+
+If you’d like a hint on how to not include the config.py file when adding your files to your GitHub repository, that’s totally okay. If not, that’s great too. You can always revisit this later if you change your mind.
+
+HINT
+To prevent GitHub from tracking and adding the config.py file to your GitHub repository, revisit Lesson 6.2.7: Create a DataFrame of city weather data.
