@@ -1,22 +1,14 @@
 # World_Weather_Analysis
+## Project Overview
+The following is an analysis that visually and statistically illustrates the relationship between geographical latitude and a variety of weather parameters using Jupyter notebook, Pandas, CityPy, Python Requests, APIs, and JSON traversals. This analysis was undertaken to assist PlanMyTrip, a vacation planning service in the provision of real-time suggestions for hotels matching client weather preferences.  
 
-## 6.1.2 Overview of the Project
-At the most fundamental level, Jack needs help answering a question: How might we provide real-time suggestions for our client's ideal hotels? Your first task was to define what you meant by "ideal." So, over the course of the conversation, you narrowed that to hotels that were (1) within a given range of latitude and longitude and that (2) provided the right kind of weather for the client.
+To perform this analysis, we first collected and analyzed weather data across cities worldwide to recommend ideal hotels based on clients' weather preferences using OpenWeatherMap and Google APIs. This analysis was undertaken in three main parts:
 
-## Basic Project Plan
-Here's an outline of your project plan:
-
-- Task: Collect and analyze weather data across cities worldwide.
-- Purpose: PlanMyTrip will use the data to recommend ideal hotels based on clients' weather preferences.
-- Method: Create a Pandas DataFrame with 500 or more of the world's unique cities and their weather data in real time. This process will entail collecting, analyzing, and visualizing the data.
-Your analysis of the data will be split into three main parts, or stages.
-
-### Collect the Data
-- Use the NumPy module to generate more than 1,500 random latitudes and longitudes.
-- Use the citipy module to list the nearest city to the latitudes and longitudes.
-- Use the OpenWeatherMap API to request the current weather data from each unique city in your list.
-- Parse the JSON data from the API request.
-- Collect the following data from the JSON file and add it to a DataFrame:
+### (1) Collecting the Data
+- Using the NumPy module, more than 1,500 random latitudes and longitudes were generated.
+- Using the citipy module, the nearest cities to the returned latitudes and longitudes were found.
+- Using the OpenWeatherMap API we requested the current weather data from each unique city in the list.
+- The JSON data from the API request was parsed to find the following and add it to a DataFrame:
 * City, country, and date
 * Latitude and longitude
 * Maximum temperature
@@ -24,63 +16,54 @@ Your analysis of the data will be split into three main parts, or stages.
 * Cloudiness
 * Wind speed
 
-### Exploratory Analysis with Visualization
-- Create scatter plots of the weather data for the following comparisons:
+### (2) Exploratory Analysis with Visualization
+- Following the collection of the above data, we created scatter plots of the weather data for the following comparisons. (These maps are viewable in the above WeatherPy.ipynb file).
 * Latitude versus temperature
 * Latitude versus humidity
 * Latitude versus cloudiness
 * Latitude versus wind speed
-- Determine the correlations for the following weather data:
+
+- We then determined the correlations for the following weather data:
+ * Latitude and Temperature   
+ The correlation between the latitude and the maximum temperature is strong to very strong because the r-value is less than –0.7 for the Northern Hemisphere and greater than 0.7 for the Southern Hemisphere, as shown by the plots here. This means that as we approach the equator, 0° latitude, the temperatures become warmer. And when we are further from the equator the temperatures become cooler. 
+
+* Latitude and Humidity   
+The correlation between the latitude and percent humidity is very low because the r-value is less than 0.04 for the Northern and Southern Hemispheres for the plots shown here. This means that percent humidity is unpredictable due to changing weather patterns that can increase or decrease percent humidity. 
+
+* Latitude and Cloudiness   
+The correlation between the latitude and percent cloudiness is very low because the r-value is less than –0.09 for the Northern Hemisphere and less than –0.02 for the Southern Hemisphere for the plots shown here. This means that cloudiness is unpredictable due to changing weather patterns that can increase or decrease percent cloudiness. 
+
+* Latitude and wind speed
+The correlation between the latitude and wind speed is very low because the r-value is less than –0.07 for the Northern Hemisphere and less than –0.3 for the Southern Hemisphere for the plots shown here. This means that wind speed is unpredictable due to changing weather patterns that can increase or decrease wind speed.
+
+- We then created a series of heatmaps using the Google Maps and Places API to showcase the following:
 * Latitude and temperature
 * Latitude and humidity
 * Latitude and cloudiness
 * Latitude and wind speed
 
-- Create a series of heatmaps using the Google Maps and Places API that showcases the following:
-* Latitude and temperature
-* Latitude and humidity
-* Latitude and cloudiness
-* Latitude and wind speed
+### (3) Visualization of the Travel Data
+- Once the above visualizations were prepared, we created a heatmap with pop-up markers to display information on specific cities based on a customer's travel preferences. 
 
-### Visualize Travel Data
-- Create a heatmap with pop-up markers that can display information on specific cities based on a customer's travel preferences. Complete these steps:
-- Filter the Pandas DataFrame based on user inputs for a minimum and maximum temperature.
-- Create a heatmap for the new DataFrame.
-- Find a hotel from the cities' coordinates using Google's Maps and Places API, and Search Nearby feature.
-- Store the name of the first hotel in the DataFrame.
-- Add pop-up markers to the heatmap that display information about the city, current maximum temperature, and a hotel in the city.
+### Additional Analysis
+Upon completing the above, we then refactored our code to comply with Beta tester recommendations, specifically, adding a description of the current weather to the weather data already collected. We then asked users to input statements to filter the data for their weather preferences, which were used to identify potential travel destinations and nearby hotels. The following used a customer temperature preference of anything between 75 and 90 degrees Fahrenheit to return hotel recommendations. From the list of potential travel destinations, the beta tester selected four cities in Mexico (Lazaro Cardenas, Acapulco, Puerto Espandido and Pochutla) to create a travel itinerary. Finally, using the Google Maps Directions API, a travel route was created between the four cities as well as a marker layer map.
 
-### Findings
-From 6.1.5 - When you run the code block, you should get slightly more than 500 unique cities. If you get fewer than 500, increase your size limit on the np.random.uniform() function.
+## Results
+The results of the analsysis described above were as follows:
+We initialized a geographical map of data based on our tester's temperature preference with markers showing cities where the criteria was met, as well as current weather conditions for the returned cities. 
+![WeatherPy_vacation_map](/WeatherPy_vacation_map.png "WeatherPy_vacation_map")
 
-### Findings
-From 6.4.2. - The correlation between the latitude and the maximum temperature is strong to very strong because the r-value is less than –0.7 for the Northern Hemisphere and greater than 0.7 for the Southern Hemisphere, as shown by the plots here. This means that as we approach the equator, 0° latitude, the temperatures become warmer. And when we are further from the equator the temperatures become cooler. Check the r-values for your plots. 
 
-### Findings
-From 6.4.3 - The correlation between the latitude and percent humidity is very low because the r-value is less than 0.04 for the Northern and Southern Hemispheres for the plots shown here. This means that percent humidity is unpredictable due to changing weather patterns that can increase or decrease percent humidity. Check the r-values for your plots. 
+Following the creation of this interactive map, we honed in on a specific country to locate four cities in a close proximity that matched the user's preferences. Mexico is the country used in the example. The following shows 4 cities in Mexico where the user's temperature preferences are satisfied. 
+![WeatherPy_travel_map](/WeatherPy_travel_map.png "WeatherPy_travel_map")
 
-### Findings
-From 6.4.4 - The correlation between the latitude and percent cloudiness is very low because the r-value is less than –0.09 for the Northern Hemisphere and less than –0.02 for the Southern Hemisphere for the plots shown here. This means that cloudiness is unpredictable due to changing weather patterns that can increase or decrease percent cloudiness. Check the r-values for your plots.
+We then modified the above map to make an itinerary for our user. The route of travel specified in the image below would satisfy bicycling as the mode of travel.
+![WeatherPy_travel_map_markers](WeatherPy_travel_map_markers.png "WeatherPy_travel_map_markers")
 
-### Findings
-From 6.4.5 - The correlation between the latitude and wind speed is very low because the r-value is less than –0.07 for the Northern Hemisphere and less than –0.3 for the Southern Hemisphere for the plots shown here. This means that wind speed is unpredictable due to changing weather patterns that can increase or decrease wind speed. Check the r-values for your plots.
+## Summary 
+The above travel itinerary assumes that the starting and ending city will be the same. In the example used in this analysis, becuase of the coastal geography of the selected cities, the itinerary will invovle "backtracking", i.e., returning to places already visited on the forward journey in order to return.
+To make the above code even more useful for potential travelers who do not wish to return to places twice on the same trip, it might be interesting to develop parameters for the directions layer map where "backtracking" is eliminated from the realm of possible returns. This could be done by establishing limits on the distance between cities, based on the mode of travel, and then making sure that cities are not visited more than once in a given itinerary. 
+In order to make these calculations, it would also be beneficial to determine the distance between cities witihin a given travel itinerary and establish an estimated time of travel between cities based on the input of the traveler's mode of transportation ("DRIVING", "BICYCLING", "WALKING").  
 
-# Challenge
-Jack loves the PlanMyTrip app. Beta testers love it too. And, as with any new product, they’ve recommended a few changes to take the app to the next level. Specifically, they recommend adding the weather description to the weather data you’ve already retrieved in this module. Then, you'll have the beta testers use input statements to filter the data for their weather preferences, which will be used to identify potential travel destinations and nearby hotels. From the list of potential travel destinations, the beta tester will choose four cities to create a travel itinerary. Finally, using the Google Maps Directions API, you will create a travel route between the four cities as well as a marker layer map.
 
-This new assignment consists of three technical analyses. You will submit the following deliverables:
 
-Deliverable 1: Retrieve Weather Data
-Deliverable 2: Create a Customer Travel Destinations Map
-Deliverable 3: Create a Travel Itinerary Map
-
-+
-A README.md that describes the purpose of the repository. Although there is no graded written analysis for this challenge, it is encouraged and good practice to add a brief description of your project.
-
-IMPORTANT
-Do not include your config.py file in your submission.
-
-If you’d like a hint on how to not include the config.py file when adding your files to your GitHub repository, that’s totally okay. If not, that’s great too. You can always revisit this later if you change your mind.
-
-HINT
-To prevent GitHub from tracking and adding the config.py file to your GitHub repository, revisit Lesson 6.2.7: Create a DataFrame of city weather data.
