@@ -63,6 +63,8 @@ The results of the analysis described above were as follows:
 
 
 ## Summary 
-The above travel itinerary assumes that the starting and ending city will be the same. In the example used in this analysis, becuase of the coastal geography of the selected cities, the itinerary will invovle "backtracking", i.e., returning to places already visited on the forward journey in order to return.
-To make the above code even more useful for potential travelers who do not wish to return to places twice on the same trip, it might be interesting to develop parameters for the directions layer map where "backtracking" is eliminated from the realm of possible returns. This could be done by establishing limits on the distance between cities, based on the mode of travel, and then making sure that cities are not visited more than once in a given itinerary. 
+The above travel itinerary assumes that the starting and ending city will be the same. In the example used in this analysis, becuase of the coastal geography of the selected cities, the itinerary will involve "backtracking", i.e., returning to places already visited on the forward journey in order to return.    
+
+To make the above code even more useful for potential travelers who do not wish to return to places twice on the same trip, it might be interesting to develop parameters for the directions layer map where "backtracking" is eliminated from the realm of possible returns. This could be done by establishing limits on the distance between cities, based on the mode of travel, and then making sure that cities are not visited more than once in a given itinerary.   
+
 In order to make these calculations, it would also be beneficial to determine the distance between cities witihin a given travel itinerary and establish an estimated time of travel between cities based on the input of the traveler's mode of transportation ("DRIVING", "BICYCLING", "WALKING").  
